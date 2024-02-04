@@ -21,3 +21,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+asset:
+  - assests/dataset/visimp_yolov8m.tflite

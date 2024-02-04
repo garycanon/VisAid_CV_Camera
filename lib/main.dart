@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:tflite/tflite.dart';
 
 
 void main() async {
@@ -12,8 +13,15 @@ void main() async {
   final cameras = await availableCameras();
   final firstCamera = cameras.first;
 
+  await Tflite.loadModel(
+    model: 'assets/dataset/visimp_yolov8m.tflite',
+    //labels: 'assets/datasetvisimp_yolov8m.txt',
+  );
+
   runApp(MainApp(camera: firstCamera));
 }
+
+
 
 class MainApp extends StatelessWidget {
   final CameraDescription camera;
@@ -59,6 +67,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
   @override
   void dispose() {
+    Tflite.close();
     _controller.dispose();
     flutterTts.stop();
     super.dispose();
