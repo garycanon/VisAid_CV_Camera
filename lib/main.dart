@@ -1,6 +1,11 @@
+//ctrl + shift + p to run emulator
+//
+//Flutter: Run Emulator > flutter emulator
+//
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +18,7 @@ void main() async {
 class MainApp extends StatelessWidget {
   final CameraDescription camera;
 
-  const MainApp({Key? key, required this.camera}) : super(key: key);
+  const MainApp({super.key, required this.camera});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class MainApp extends StatelessWidget {
 class CameraScreen extends StatefulWidget {
   final CameraDescription camera;
 
-  const CameraScreen({Key? key, required this.camera}) : super(key: key);
+  const CameraScreen({super.key, required this.camera});
 
   @override
   _CameraScreenState createState() => _CameraScreenState();
@@ -97,15 +102,17 @@ class _CameraScreenState extends State<CameraScreen> {
   void _openAboutUsPage(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => AboutUsPage(),
+        builder: (context) => const AboutUsPage(),
       ),
     );
+    _speakText("About us Page");
   }
 
   void _openCamera() {
     _speakText("Camera open");
     // TODO: Implement camera opening logic here
   }
+  
 
   Future<void> _speakText(String text) async {
     await flutterTts.setLanguage("en-US");
@@ -114,11 +121,13 @@ class _CameraScreenState extends State<CameraScreen> {
 }
 
 class AboutUsPage extends StatelessWidget {
+  const AboutUsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('About Us')),
-      body: Center(
+      body: const Center(
         child: Text(
           'VisAid_CV App\n\nDeveloped by:\n\nCANON\n\nPABABERO\n\nPASTRANA\n\nFor research and development only.',
           style: TextStyle(fontSize: 18),
@@ -126,4 +135,5 @@ class AboutUsPage extends StatelessWidget {
       ),
     );
   }
+  
 }

@@ -11,6 +11,7 @@ dependencies:
   camera: 0.10.5+9
   flutter:
     sdk: flutter
+  tflite: ^1.1.2
     
 
 dev_dependencies:
