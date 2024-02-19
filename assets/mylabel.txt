@@ -1,0 +1,14 @@
+Bed
+Bottle 
+Cabinet
+Chair
+Door
+Fan 
+Lamp
+Laptop
+Person
+Refrigerator
+Sofa
+TV
+Table 
+cup
